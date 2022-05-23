@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <style>
+        table {
+            width: 400px;
+            margin: 20px 0;
+            border-collapse: collapse;
+            background-color: blueviolet;
+        }
+        
+        table,
+        th,
+        td {
+            border: 1px solid #cdcdcd;
+        }
+        
+        body {
+            background-color: violet;
+        }
+        
+        h1 {
+            text-align: center;
+            color: darkblue;
+        }
+        
+        .add {
+            background-color: rgb(243, 93, 185);
+        }
+        
+        .delete {
+            background-color: rgb(243, 93, 185);
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <h1>customer details
+    </h1>
+    <form>
+        <label>name</label>
+        <input type="text" id="name" placeholder="Name"><br><br>
+        <label>id</label>
+        <input type="text" id="id1" placeholder="customer id"><br><br>
+        <label>address</label>
+        <input type="text" id="address1" placeholder="customer address"><br><br>
+        <input type="button" class="add" value="Add customer"><br>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>Name</th>
+                <th>id</th>
+                <th>address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox" name="rcd"></td>
+                <td>anjana</td>
+                <td>123</td>
+                <td>neelambari</td>
+            </tr>
+        </tbody>
+    </table><button type="button" class="delete">Delete customer</button></body>
+<script>
+    $(document).ready(function() {
+            $(".add").click(function() {
+                var name1 = $("#name").val();
+                var idcust = $("#id1").val();
+                var addressc = $("#address1").val();
+                var row = "<tr><td><input type='checkbox' name='rcd'></td><td>" + name1 + "</td><td>" + idcust + "</td><td>" + addressc + "</td></tr>";
+                $("table tbody").append(row);
+            });
+
+            $(".delete").click(function() {
+                $("table tbody").find('input[name="rcd"]').each(function() {
+                    if ($(this).is(":checked")) {
+                        $(this).parents("tr").remove();
+                    }
+                });
+            });
+        }
+
+    );
+</script>
+</body>
+
+</html>
